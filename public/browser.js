@@ -109,8 +109,7 @@ function print(videos, sortKey) {
       <thead>
         <tr>
           <th></th>
-          <th onclick="javascript:window.videos.print('viewCount')" style="cursor: pointer; border-bottom: 1px solid;">View count</th>
-          <th onclick="javascript:window.videos.print('averageRating')" style="cursor: pointer; border-bottom: 1px solid;">Average rating</th>
+          <th onclick="javascript:window.videos.print('${sortKey}')" style="cursor: pointer; border-bottom: 1px solid;">View count</th>
           <th></th>
           <th>Video</th>
         </tr>
@@ -119,8 +118,7 @@ function print(videos, sortKey) {
       ${sorted.map((video, index) => `
         <tr style="padding: 1em;">
           <td style="color: hsla(0, 0%, 6.7%, .6);">${index + 1}</td>
-          <td>${video.viewCount}</td>
-          <td>${Number(video.averageRating).toFixed(2)}</td>
+          <td>${video[sortKey]}</td>
           <td>${youtubeLink(video.videoId, `<img src="${video.thumbnail.thumbnails[0].url}">`)}</td>
           <td>${youtubeLink(video.videoId, video.title)}</a></td>
         </tr>
