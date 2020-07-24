@@ -20,7 +20,11 @@ function cache(fn) {
     }
 
     const json = await fn(...args);
-    localStorage.setItem(key, JSON.stringify(json));
+    try {
+	    localStorage.setItem(key, JSON.stringify(json));
+    } catch (e) {
+	    // failed saving to cache
+    }
     return json;
   }
 }
