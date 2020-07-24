@@ -103,14 +103,18 @@ function youtubeLink(videoId, children) {
 }
 
 function print(videos, sortKey) {
-  const sorted = Array.from(videos).sort((a, b) => Number(b[sortKey]) - Number(a[sortKey]));
+  const sorted = Array.from(videos).sort((a, b) => {
+	if (a[sortKey] > b[sortKey]) return 1;
+	if (a[sortKey] < b[sortKey]) return -1;
+	return 0;
+  });
 
   const html = `
     <table style="color: hsl(0, 0%, 6.7%); font-family: Roboto, Arial, sans-serif; border-spacing: 1em;">
       <thead>
         <tr>
           <th></th>
-          <th onclick="javascript:window.videos.print('${sortKey}')" style="cursor: pointer; border-bottom: 1px solid;">View count</th>
+          <th style="cursor: pointer; border-bottom: 1px solid;">${sortKey}</th>
           <th></th>
           <th>Video</th>
         </tr>
