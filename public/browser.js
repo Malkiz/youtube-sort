@@ -162,7 +162,7 @@ async function main() {
   const ids = getPageIds();
   console.log(`Found ${ids.length} videos`);
 
-  const getVideoDetailsCached = cache(getVideoDetails);
+  const getVideoDetailsCached = (getVideoDetails);
 
   let videos = [];
   for (const id of ids) {
